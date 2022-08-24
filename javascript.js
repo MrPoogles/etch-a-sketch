@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const colorWindow = document.querySelector(".colorWindow");
 const rainbowButton = document.querySelector(".rainbowButton");
+const shadeButton = document.querySelector(".shadeButton");
 const eraseButton = document.querySelector(".eraseButton");
 const gridButton = document.querySelector(".gridButton");
 const etchButton = document.querySelector(".etchButton");
@@ -61,6 +62,14 @@ const ableRainbow = function() {
   }));
 };
 
+const ableShade = function() {
+  let shadeColor = 250;
+  return function(e) {
+    shadeColor -= 25;
+    e.target.style.backgroundColor = `rgb(${shadeColor},${shadeColor},${shadeColor})`;
+  };
+};
+
 const ableColor = function() {
   let grids = document.querySelectorAll(".grid");
   grids.forEach(grid => grid.addEventListener('mouseover', (e) => {
@@ -76,6 +85,10 @@ const clearAllColor = function() {
 
 etchButton.addEventListener("click", ableColor);
 rainbowButton.addEventListener("click", ableRainbow);
+shadeButton.addEventListener("click", () => {
+  let grids = document.querySelectorAll(".grid");
+  grids.forEach(grid => grid.addEventListener('mouseover', ableShade()));
+});
 eraseButton.addEventListener("click", ableEraser);
 gridButton.addEventListener("click", inputGrid);
 clearButton.addEventListener("click", clearAllColor);
