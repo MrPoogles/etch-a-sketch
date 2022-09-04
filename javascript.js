@@ -5,9 +5,13 @@ const shadeButton = document.querySelector(".shadeButton");
 const eraseButton = document.querySelector(".eraseButton");
 const etchButton = document.querySelector(".etchButton");
 const clearButton = document.querySelector(".clearButton");
-const gridSizeValue = document.querySelector(".gridSizeInput")
+const gridInfoParent = document.querySelector(".gridInfoParent");
+const gridSizeInput = document.querySelector(".gridSizeInput");
 
 //Default parameter
+const gridSizeInfo = document.createElement("div");
+gridSizeInfo.textContent = "16 x 16";
+gridInfoParent.appendChild(gridSizeInfo);
 for (let i = 1; i <= 16*16; i++) {
   const grid = document.createElement("div");
   grid.style.border = "1px solid";
@@ -19,7 +23,7 @@ for (let i = 1; i <= 16*16; i++) {
 }
 
 const drawGrid = function() {
-  let size = `${gridSizeValue.value}`
+  let size = `${gridSizeInput.value}`
   adjustGridBox(size)
 };
 
@@ -31,6 +35,10 @@ function removeAllChildNodes(parent){
 
 const adjustGridBox = function(size) {
   removeAllChildNodes(container);
+  removeAllChildNodes(gridInfoParent);
+  const newGridSizeInfo = document.createElement("div");
+  newGridSizeInfo.textContent = `${size} x ${size}`
+  gridInfoParent.appendChild(newGridSizeInfo);
   for (let i = 1; i <= size*size; i++) {
     const grid = document.createElement("div");
     grid.style.border = "1px solid";
@@ -89,7 +97,7 @@ const clearAllColor = function() {
 }
 
 
-gridSizeValue.addEventListener("change", drawGrid);
+gridSizeInput.addEventListener("change", drawGrid);
 etchButton.addEventListener("click", ableColor);
 rainbowButton.addEventListener("click", ableRainbow);
 shadeButton.addEventListener("click", () => {
