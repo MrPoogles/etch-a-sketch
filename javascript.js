@@ -11,6 +11,7 @@ const gridSizeInput = document.querySelector(".gridSizeInput");
 //Default parameter
 const gridSizeInfo = document.createElement("div");
 gridSizeInfo.textContent = "16 x 16";
+gridSizeInfo.classList.add("inputLabel");
 gridInfoParent.appendChild(gridSizeInfo);
 for (let i = 1; i <= 16*16; i++) {
   const grid = document.createElement("div");
@@ -37,6 +38,7 @@ const updateGridSizeInfo = function(size) {
   removeAllChildNodes(gridInfoParent);
   const newGridSizeInfo = document.createElement("div");
   newGridSizeInfo.textContent = `${size} x ${size}`
+  newGridSizeInfo.classList.add("inputLabel");
   gridInfoParent.appendChild(newGridSizeInfo);
 }
 

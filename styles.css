@@ -60,3 +60,13 @@ h1 {
   text-align: center;
   padding: 20px 0px;
 }
+
+.gridInfoParent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputLabel {
+  font-size: 35px;
+}
