@@ -3,20 +3,25 @@ const colorWindow = document.querySelector(".colorWindow");
 const rainbowButton = document.querySelector(".rainbowButton");
 const shadeButton = document.querySelector(".shadeButton");
 const eraseButton = document.querySelector(".eraseButton");
-const gridButton = document.querySelector(".gridButton");
 const etchButton = document.querySelector(".etchButton");
 const clearButton = document.querySelector(".clearButton");
+const gridSizeValue = document.querySelector(".gridSizeInput")
 
-
-const inputGrid = function() {
-  let size = prompt("Please input desired grid size, if you put '3' it will generate 3 x 3 grid.");
-  if (size > 50) {
-    alert("Maximum grid is 50 x 50!");
-    gridBox(50);
-  } else {
-    gridBox(size);
-  }
+//Default parameter
+for (let i = 1; i <= 16*16; i++) {
+  const grid = document.createElement("div");
+  grid.style.border = "1px solid";
+  grid.style.borderColor = "black";
+  container.style.gridTemplateColumns = "repeat(16, 1fr)";
+  container.style.gridTemplateRows = "repeat(16, 1fr)";
+  grid.classList.add("grid");
+  container.appendChild(grid);
 }
+
+const drawGrid = function() {
+  let size = `${gridSizeValue.value}`
+  adjustGridBox(size)
+};
 
 function removeAllChildNodes(parent){
   while(parent.firstChild){
@@ -24,16 +29,16 @@ function removeAllChildNodes(parent){
   }
 }
 
-const gridBox = function(size) {
+const adjustGridBox = function(size) {
   removeAllChildNodes(container);
   for (let i = 1; i <= size*size; i++) {
-      const grid = document.createElement("div");
-      grid.style.border = "1px solid";
-      grid.style.borderColor = "black";
-      container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-      container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-      grid.classList.add("grid");
-      container.appendChild(grid);
+    const grid = document.createElement("div");
+    grid.style.border = "1px solid";
+    grid.style.borderColor = "black";
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    grid.classList.add("grid");
+    container.appendChild(grid);
   }
 }
 
@@ -83,6 +88,8 @@ const clearAllColor = function() {
   grids.forEach(grid => grid.style.backgroundColor = "white");
 }
 
+
+gridSizeValue.addEventListener("change", drawGrid);
 etchButton.addEventListener("click", ableColor);
 rainbowButton.addEventListener("click", ableRainbow);
 shadeButton.addEventListener("click", () => {
@@ -90,5 +97,4 @@ shadeButton.addEventListener("click", () => {
   grids.forEach(grid => grid.addEventListener('mouseover', ableShade()));
 });
 eraseButton.addEventListener("click", ableEraser);
-gridButton.addEventListener("click", inputGrid);
 clearButton.addEventListener("click", clearAllColor);
