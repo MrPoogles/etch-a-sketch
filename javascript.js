@@ -22,16 +22,16 @@ for (let i = 1; i <= 16*16; i++) {
   container.appendChild(grid);
 }
 
-const drawGrid = function() {
-  let size = `${gridSizeInput.value}`
-  adjustGridBox(size)
-};
-
 function removeAllChildNodes(parent){
   while(parent.firstChild){
     parent.removeChild(parent.firstChild);
   }
 }
+
+const drawGrid = function() {
+  let size = `${gridSizeInput.value}`
+  adjustGridBox(size)
+};
 
 const adjustGridBox = function(size) {
   removeAllChildNodes(container);
