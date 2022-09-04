@@ -28,6 +28,18 @@ function removeAllChildNodes(parent){
   }
 }
 
+const handleUpdate = function() {
+  let size = `${gridSizeInput.value}`
+  updateGridSizeInfo(size)
+};
+
+const updateGridSizeInfo = function(size) {
+  removeAllChildNodes(gridInfoParent);
+  const newGridSizeInfo = document.createElement("div");
+  newGridSizeInfo.textContent = `${size} x ${size}`
+  gridInfoParent.appendChild(newGridSizeInfo);
+}
+
 const drawGrid = function() {
   let size = `${gridSizeInput.value}`
   adjustGridBox(size)
@@ -35,10 +47,6 @@ const drawGrid = function() {
 
 const adjustGridBox = function(size) {
   removeAllChildNodes(container);
-  removeAllChildNodes(gridInfoParent);
-  const newGridSizeInfo = document.createElement("div");
-  newGridSizeInfo.textContent = `${size} x ${size}`
-  gridInfoParent.appendChild(newGridSizeInfo);
   for (let i = 1; i <= size*size; i++) {
     const grid = document.createElement("div");
     grid.style.border = "1px solid";
@@ -96,7 +104,8 @@ const clearAllColor = function() {
   grids.forEach(grid => grid.style.backgroundColor = "white");
 }
 
-
+gridSizeInput.addEventListener("change", handleUpdate);
+gridSizeInput.addEventListener("mousemove", handleUpdate);
 gridSizeInput.addEventListener("change", drawGrid);
 etchButton.addEventListener("click", ableColor);
 rainbowButton.addEventListener("click", ableRainbow);
