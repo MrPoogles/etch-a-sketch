@@ -17,7 +17,7 @@ gridInfoParent.appendChild(gridSizeInfo);
 for (let i = 1; i <= 16*16; i++) {
   const grid = document.createElement("div");
   grid.style.border = "1px solid";
-  grid.style.borderColor = "black";
+  grid.style.borderColor = "rgb(192,192,192)";
   container.style.gridTemplateColumns = "repeat(16, 1fr)";
   container.style.gridTemplateRows = "repeat(16, 1fr)";
   grid.classList.add("grid");
@@ -37,7 +37,7 @@ const borderOnOff = function() {
     grids.forEach(grid => grid.style.border = "none");
     gridBorder = false;
   } else if (gridBorder === false) {
-    grids.forEach(grid => grid.style.border = "1px solid black");
+    grids.forEach(grid => grid.style.border = "1px solid rgb(192,192,192)");
     gridBorder = true;
   }
 }
@@ -65,7 +65,7 @@ const adjustGridBox = function(size) {
   for (let i = 1; i <= size*size; i++) {
     const grid = document.createElement("div");
     grid.style.border = "1px solid";
-    grid.style.borderColor = "black";
+    grid.style.borderColor = "rgb(192,192,192)";
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     grid.classList.add("grid");
