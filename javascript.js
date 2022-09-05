@@ -4,6 +4,7 @@ const rainbowButton = document.querySelector(".rainbowButton");
 const shadeButton = document.querySelector(".shadeButton");
 const eraseButton = document.querySelector(".eraseButton");
 const etchButton = document.querySelector(".etchButton");
+const borderButton = document.querySelector(".disableBorderButton")
 const clearButton = document.querySelector(".clearButton");
 const gridInfoParent = document.querySelector(".gridInfoParent");
 const gridSizeInput = document.querySelector(".gridSizeInput");
@@ -22,10 +23,22 @@ for (let i = 1; i <= 16*16; i++) {
   grid.classList.add("grid");
   container.appendChild(grid);
 }
+let gridBorder = true;
 
 function removeAllChildNodes(parent){
   while(parent.firstChild){
     parent.removeChild(parent.firstChild);
+  }
+}
+
+const borderOnOff = function() {
+  let grids = document.querySelectorAll(".grid");
+  if (gridBorder === true) {
+    grids.forEach(grid => grid.style.border = "none");
+    gridBorder = false;
+  } else if (gridBorder === false) {
+    grids.forEach(grid => grid.style.border = "1px solid black");
+    gridBorder = true;
   }
 }
 
@@ -116,4 +129,5 @@ shadeButton.addEventListener("click", () => {
   grids.forEach(grid => grid.addEventListener('mouseover', ableShade()));
 });
 eraseButton.addEventListener("click", ableEraser);
+borderButton.addEventListener("click", borderOnOff);
 clearButton.addEventListener("click", clearAllColor);
