@@ -71,6 +71,7 @@ const adjustGridBox = function(size) {
     grid.classList.add("grid");
     container.appendChild(grid);
   }
+  gridBorder = true;
 }
 
 const ableEraser = function() {
