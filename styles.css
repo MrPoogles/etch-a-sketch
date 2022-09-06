@@ -1,3 +1,7 @@
+body {
+  background-color: #ffb6c1;
+}
+
 #content {
   display: flex;
   flex-direction: column;
@@ -10,13 +14,11 @@
   height: 800px;
   width: 800px;
   border: 2px solid #afafaf;
+  background-color: #fff;
 }
 
 .grid {
   box-sizing: border-box;
-}
-.grid:hover {
-  background-color: black;
 }
 
 .mainContainer {
@@ -27,6 +29,7 @@
   align-items: center;
   justify-content: space-evenly;
   border-radius: 1%;
+  background-color: #add8e6;
 }
 
 .control {
@@ -98,6 +101,7 @@ h1 {
   width: 200px;
   height: 100px;
   margin: 0px;
+  background-color: #add8e6;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
