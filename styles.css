@@ -1,5 +1,11 @@
 body {
   background-color: #ffb6c1;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #content {
